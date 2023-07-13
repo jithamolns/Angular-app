@@ -1,0 +1,47 @@
+body{
+    padding-top: 40px;
+}
+.app-window{
+    width: 80%;
+    margin: auto;
+    box-shadow: -4px 2px 12px 4px #ccc;
+    padding: 20px;
+}
+tr td{
+    padding: 10px;
+}
+.task-table{
+    border-collapse: collapse;
+}
+.finished{
+    text-decoration: line-through;
+}
+i.error{
+    display: block;
+    color: red;
+}
+form{
+    margin-bottom: 30px;
+    display: flex;
+}
+button{
+    border: 1px solid #48a7fe;
+	outline: none;
+	background: none;
+	background-color: #48a7fe;
+	color: #FFF;
+	padding: 10px 15px;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+}
+input{    
+	padding: 10px 15px;
+	appearance: none;
+	border: 2px solid #F3F3F3;
+	background-color: #F3F3F3;
+	font-size: 14px;
+	outline: none;
+    display: inline-block;
+	flex: 1 1 100%;
+}

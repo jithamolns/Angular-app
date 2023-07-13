@@ -8,12 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
     <script src="script.js"></script>
 </head>
-<body>
+<body ng-app="todoApplication" ng-controller="appController">
     <div class="app-window">
-        <h4></h4>
+        <h4>{{heading}}</h4>
         <form>
-            <input type="text" value="" placeholder="Enter task..">
-            <button>Add</button> 
+            <input type="text" value="" ng-model="task_name" placeholder="Enter task..">
+            <button ng-click="addTask(task_name)">Add</button> 
         </form>
 
         <table class="task-table">
