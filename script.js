@@ -22,8 +22,14 @@ app.controller("appController", function($scope){
             $scope.task_name = "";       
         }        
     }
+    // Delete Task
     $scope.deleteTask = function(i){
         $scope.taskLists.splice(i, 1);
+    }
+
+    // Change status
+    $scope.taskStatus = function(i){
+        $scope.taskLists[i].completed = true;
     }
 
  });
