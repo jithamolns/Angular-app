@@ -20,8 +20,10 @@ app.controller("appController", function($scope){
             );       
             $scope.error = "";   
             $scope.task_name = "";       
-        }
-        
+        }        
+    }
+    $scope.deleteTask = function(i){
+        $scope.taskLists.splice(i, 1);
     }
 
  });
