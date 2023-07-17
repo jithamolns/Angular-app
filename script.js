@@ -47,9 +47,7 @@ app.controller("appController", function($scope){
             $scope.jsonObj = JSON.stringify($scope.taskLists);
             sessionStorage.setItem("tasks", JSON.stringify([...JSON.parse(sessionStorage.getItem("tasks") || "[]"), { taskName: task_name, completed: false }]));
             $scope.error = "";   
-            $scope.task_name = "";   
-            // $scope.str = sessionStorage.getItem(username);
-            // $scope.taskObj = JSON.parse($scope.str);            
+            $scope.task_name = "";          
         }        
     }
 
@@ -59,16 +57,18 @@ app.controller("appController", function($scope){
     }
 
     // Change status
-    $scope.taskStatus = function(task_name){
-        // $scope.taskLists[i].completed = true;   
-        console.log(task_name);     
-        $scope.tasks = Array.from(JSON.parse(sessionStorage.getItem("tasks")));
-        $scope.tasks.forEach(taskName => {            
-            // if($scope.tasks.indexOf(i)){
-            //     taskName.completed = !taskName.completed;
-            // }
+    $scope.taskStatus = function(itemName, index){
+
+        // $scope.taskLists[index].completed = true;  
+        
+        $scope.taskLists = Array.from(JSON.parse(sessionStorage.getItem("tasks")));
+        $scope.taskLists.forEach(task => {
+            if (task.taskName === itemName) {
+              task.completed = !task.completed;
+            }
           });
-          sessionStorage.setItem("tasks", JSON.stringify($scope.tasks));
+        sessionStorage.setItem("tasks", JSON.stringify($scope.taskLists));
+         
     }
 
  });
