@@ -10,7 +10,6 @@ app.controller("appController", function($scope){
     $scope.task_name = "";
     $scope.username = ""
     $scope.str = "";
-
     
     $scope.showTasks = function(){
         if (localStorage.getItem("tasks") == null) return;
@@ -31,7 +30,6 @@ app.controller("appController", function($scope){
                 }
             );       
 
-            $scope.jsonObj = JSON.stringify($scope.taskLists);
             localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), { taskName: task_name, completed: false }]));
             $scope.error = "";   
             $scope.task_name = "";          
