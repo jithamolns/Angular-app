@@ -13,25 +13,20 @@ app.controller("appController", function($scope){
 
     
     $scope.showTasks = function(){
-        if (sessionStorage.getItem("tasks") == null) return;
-        $scope.taskLists = Array.from(JSON.parse(sessionStorage.getItem("tasks")));
+        if (localStorage.getItem("tasks") == null) return;
+        $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
     }
     
     $scope.showTasks();
 
     $scope.removeSession = function(){
-        sessionStorage.removeItem('key');        
+        localStorage.removeItem('key');        
     }
 
-    // $scope.clearAll = function(){
-    //     sessionStorage.clear();
-    // }
-    
-    // $scope.getSession = function(user, tasks){
-    //     return sessionStorage.getItem(user, tasks);
-    // }
-    
- 
+    $scope.clearAll = function(){
+        localStorage.clear();
+    }
+     
     //Add task function
     $scope.addTask = function(task_name){   
         if(task_name == ''){
@@ -45,30 +40,33 @@ app.controller("appController", function($scope){
             );       
 
             $scope.jsonObj = JSON.stringify($scope.taskLists);
-            sessionStorage.setItem("tasks", JSON.stringify([...JSON.parse(sessionStorage.getItem("tasks") || "[]"), { taskName: task_name, completed: false }]));
+            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), { taskName: task_name, completed: false }]));
             $scope.error = "";   
             $scope.task_name = "";          
         }        
     }
 
     // Delete Task
-    $scope.deleteTask = function(i){
-        $scope.taskLists.splice(i, 1);
+    $scope.deleteTask = function(itemName, i){
+        $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
+        $scope.taskLists.forEach(task => {
+            if (task.taskName === itemName) {
+                $scope.taskLists.splice(i, 1);
+            }
+          });
+        localStorage.setItem("tasks", JSON.stringify($scope.taskLists)); 
+             
     }
 
     // Change status
-    $scope.taskStatus = function(itemName, index){
-
-        // $scope.taskLists[index].completed = true;  
-        
-        $scope.taskLists = Array.from(JSON.parse(sessionStorage.getItem("tasks")));
+    $scope.taskStatus = function(itemName){        
+        $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {
             if (task.taskName === itemName) {
               task.completed = !task.completed;
             }
           });
-        sessionStorage.setItem("tasks", JSON.stringify($scope.taskLists));
-         
+        localStorage.setItem("tasks", JSON.stringify($scope.taskLists));         
     }
 
  });
