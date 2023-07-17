@@ -4,7 +4,7 @@ var app = angular.module("todoApplication", []);
 
 app.controller("appController", function($scope){
 
-    $scope.heading = 'My To Do List';
+    $scope.heading = 'My To-Do List';
     $scope.error = "";  
     $scope.taskLists = []; 
     $scope.task_name = "";
@@ -18,16 +18,8 @@ app.controller("appController", function($scope){
     }
     
     $scope.showTasks();
-
-    $scope.removeSession = function(){
-        localStorage.removeItem('key');        
-    }
-
-    $scope.clearAll = function(){
-        localStorage.clear();
-    }
      
-    //Add task function
+    //Adding tasks
     $scope.addTask = function(task_name){   
         if(task_name == ''){
             $scope.error = "Please enter a task";                        
@@ -58,7 +50,7 @@ app.controller("appController", function($scope){
              
     }
 
-    // Change status
+    // Completed task
     $scope.taskStatus = function(itemName){        
         $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {

@@ -10,24 +10,26 @@
     </head>
     <body ng-app="todoApplication" ng-controller="appController">
         <div class="app-window">
-            <h4>{{heading}}</h4>
+            <h3>{{heading}}</h3>
             <form>
                 <!-- <input type="name" ng-model="username" placeholder="Enter your name"> -->
-                <input type="text" value="" ng-model="task_name" placeholder="Enter task..">
+                <input type="text" value="" class="task-input" ng-model="task_name" placeholder="Enter task..">
                 <button ng-click="addTask(task_name)">Add</button> 
             </form>
             <i class="error">{{error}}</i>
 
             <table class="task-table">
-                <tr ng-repeat = "task in taskLists">
+                <tr ng-repeat = "task in taskLists" ng-click = "taskStatus(task.taskName)">
                     <td>{{$index+1}}</td>
                     <td class={{task.completed?"finished":""}}>{{task.taskName}}</td>
                     <td>{{task.completed?"Completed":"In progress"}}</td>
-                    <td><button ng-click = "taskStatus(task.taskName)">Complete</button></td>
+                    <td>
+                        <!-- <input type="checkbox"  (change)="taskStatus(task.taskName)"  class="check"> -->
+                        <!-- <button ng-click = "taskStatus(task.taskName)">Complete</button> -->
+                    </td>
                     <td><button ng-click = "deleteTask(task.taskName,$index)">Delete</button></td>
                 </tr>
             </table>            
-            <button ng-click = "clearAll()">Clear</button>
 
         </div>
     </body>

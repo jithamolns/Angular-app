@@ -7,11 +7,23 @@ body{
     box-shadow: -4px 2px 12px 4px #ccc;
     padding: 20px;
 }
+tr{
+	cursor: pointer;
+	border-bottom: 1px solid #ccc;
+}
+tr:last-child{
+	border-bottom: 0;
+}
 tr td{
     padding: 10px;
 }
+tr td:last-child{
+	text-align: right;
+	padding-right: 0;
+}
 .task-table{
     border-collapse: collapse;
+	width: 100%;
 }
 .finished{
     text-decoration: line-through;
@@ -35,7 +47,11 @@ button{
 	font-weight: 700;
 	cursor: pointer;
 }
-input{    
+button:hover{
+	background-color: #0661b4;
+	border-color: #0661b4;
+}
+input.task-input{    
 	padding: 10px 15px;
 	appearance: none;
 	border: 2px solid #F3F3F3;
