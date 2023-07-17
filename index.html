@@ -11,9 +11,9 @@
     <body ng-app="todoApplication" ng-controller="appController">
         <div class="app-window">
             <h4>{{heading}}</h4>
-            <form>
+            <form>                
                 <input type="text" value="" ng-model="task_name" placeholder="Enter task..">
-                <button ng-click="addTask(task_name)">Add</button> 
+                <button ng-click="addTask(task_name, username)">Add</button> 
             </form>
             <i class="error">{{error}}</i>
 
@@ -25,7 +25,12 @@
                     <td><button ng-click = "taskStatus($index)">Complete</button></td>
                     <td><button ng-click = "deleteTask($index)">Delete</button></td>
                 </tr>
-            </table>
+            </table>            
+            <button ng-click = "clearAll()">Clear</button>
+            <ul ng-repeat = "item in taskObj">
+                <li>{{item.taskName}}</li>
+            </ul>
+
         </div>
     </body>
 </html>
