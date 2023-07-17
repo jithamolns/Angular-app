@@ -46,7 +46,7 @@ app.controller("appController", function($scope){
         }        
     }
 
-    // Delete Task
+    // Deleting a Task
     $scope.deleteTask = function(itemName, i){
         $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {
