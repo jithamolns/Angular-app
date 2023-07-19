@@ -16,6 +16,10 @@ tr:last-child{
 }
 tr td{
     padding: 10px;
+	cursor: pointer;
+}
+tr:hover td{
+    color: #1572c7;
 }
 tr td:last-child{
 	text-align: right;

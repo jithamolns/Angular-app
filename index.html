@@ -23,10 +23,7 @@
                     <td>{{$index+1}}</td>
                     <td class={{task.completed?"finished":""}}>{{task.taskName}}</td>
                     <td>{{task.completed?"Completed":"In progress"}}</td>
-                    <td>
-                        <!-- <input type="checkbox"  (change)="taskStatus(task.taskName)"  class="check"> -->
-                        <!-- <button ng-click = "taskStatus(task.taskName)">Complete</button> -->
-                    </td>
+                    <td></td>
                     <td><button ng-click = "deleteTask(task.taskName,$index)">Delete</button></td>
                 </tr>
             </table>            
