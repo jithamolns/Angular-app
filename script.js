@@ -25,12 +25,13 @@ app.controller("appController", function($scope){
         }else{                           
             $scope.taskLists.push(
                 {
-                    taskName: task_name,
+                    id: Math.random(),
+                    todo: task_name,
                     completed: false
                 }
             );       
 
-            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), { taskName: task_name, completed: false }]));
+            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {id:Math.random(), todo: task_name, completed: false }]));
             $scope.error = "";   
             $scope.task_name = "";          
         }        
@@ -40,7 +41,7 @@ app.controller("appController", function($scope){
     $scope.deleteTask = function(itemName, i){
         $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {
-            if (task.taskName === itemName) {
+            if (task.todo === itemName) {
                 $scope.taskLists.splice(i, 1);
             }
           });
@@ -52,7 +53,7 @@ app.controller("appController", function($scope){
     $scope.taskStatus = function(itemName){        
         $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {
-            if (task.taskName === itemName) {
+            if (task.todo === itemName) {
               task.completed = !task.completed;
             }
           });
