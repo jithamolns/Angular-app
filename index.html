@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="To Do List Application">
         <title>My To Do list</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
@@ -11,22 +12,23 @@
     <body ng-app="todoApplication" ng-controller="appController">
         <div class="app-window"> 
             <h3>{{heading}}</h3>
-            <form>
-                <!-- <input type="name" ng-model="username" placeholder="Enter your name"> -->
+            <form> 
                 <input type="text" value="" class="task-input" ng-model="task_name" placeholder="Enter task..">
                 <button ng-click="addTask(task_name)">Add</button> 
             </form>
             <i class="error">{{error}}</i>
 
-            <table class="task-table">
-                <tr ng-repeat = "task in taskLists" ng-click = "taskStatus(task.todo)">
-                    <td>{{$index+1}}</td>
-                    <td class={{task.completed?"finished":""}}>{{task.todo}}</td>
-                    <td>{{task.completed?"Completed":"In progress"}}</td>
-                    <td></td>
-                    <td><button ng-click = "deleteTask(task.todo,$index)">Delete</button></td>
-                </tr>
-            </table>            
+            <div class="table-wrap">
+                <table class="task-table">
+                    <tr ng-repeat = "task in taskLists" ng-click = "taskStatus(task.todo)">
+                        <td>{{$index+1}}</td>
+                        <td class={{task.completed?"finished":""}}>{{task.todo}}</td>
+                        <td>{{task.completed?"Completed":"In progress"}}</td>
+                        <td></td>
+                        <td><button ng-click = "deleteTask(task.todo,$index)">Delete</button></td>
+                    </tr>
+                </table>   
+            </div>         
 
         </div>
     </body>

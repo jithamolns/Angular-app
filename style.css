@@ -65,3 +65,20 @@ input.task-input{
     display: inline-block;
 	flex: 1 1 100%;
 }
+@media screen and (max-width: 575px){
+	.table-wrap{
+		overflow-x: auto;
+	}
+	button{
+		width: 100%;
+		margin-top: 10px;
+	}
+	form{
+		display: block;
+		overflow: hidden;
+		width: 100%;
+	}
+	input.task-input{
+		width: 100%;
+	}
+}

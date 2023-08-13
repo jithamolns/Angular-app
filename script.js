@@ -31,7 +31,8 @@ app.controller("appController", function($scope){
                 }
             );       
 
-            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), {id:Math.random(), todo: task_name, completed: false }]));
+            localStorage.setItem("tasks", JSON.stringify([...JSON.parse(localStorage.getItem("tasks") || "[]"), 
+             {id:Math.random(), todo: task_name, completed: false }]));
             $scope.error = "";   
             $scope.task_name = "";          
         }        
@@ -49,7 +50,7 @@ app.controller("appController", function($scope){
              
     }
 
-    // Completed task
+    // Update task as completed
     $scope.taskStatus = function(itemName){        
         $scope.taskLists = Array.from(JSON.parse(localStorage.getItem("tasks")));
         $scope.taskLists.forEach(task => {
@@ -61,3 +62,4 @@ app.controller("appController", function($scope){
     }
 
  });
+ 
